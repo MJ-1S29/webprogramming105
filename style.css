@@ -1,0 +1,27 @@
+.item3:hover{
+    color: white;
+    background-color: black;
+}
+.item4{
+    color: aqua;
+}
+.item5{
+    color: teal;
+}
+h1{
+    font-family: 'Nanum Brush Script', cursive;
+}
+body{
+    font-size: 27px;
+}
+
+.fontest1{color: yellowgreen; font-size: 200%;}
+.fontest2{direction: rtl;}
+.fontest3{letter-spacing: 7ch;}
+.fontest4{line-height: 3cm;}
+.fontest5{text-align: center;}
+.fontest6{text-decoration: underline; text-decoration-color: aqua;}
+.fontest7{text-indent: 2ch;}
+.fontest8{text-shadow: 2px 2px 2px darkcyan;}
+.fontest9{text-transform: uppercase;}
+.fontest10
