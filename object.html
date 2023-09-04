@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let today = new Date();
+        document.write(today + "<br>");
+        document.write(today.getFullYear() + "년<br>");
+        document.write(today.getMonth() + 1 + "월<br>");
+        document.write(today.getDate() + "일<br>");
+        document.write(today.getHours() + "시<br>");
+        document.write(today.getMinutes() + "분<br>");
+        document.write(today.getSeconds() + "초<br>");
+        document.write(today.toLocaleString() + "<br>");
+
+        document.write("-----<br>");
+
+        let date1 = new Date("09/04/2023");
+        let date2 = new Date("12/29/2023");
+        let diff = date2.getTime() - date1.getTime();
+        let diff_days = diff / (1000 * 60 * 60 * 24);
+
+        document.write(
+            date1 + "<br> 와 <br>"
+            + date2 + "<br> 날짜 간의 총 일수 : "
+            + diff_days
+        );
+    </script>
+</body>
+</html>
