@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <script>
+        // function calc(type) {
+        //     let x = parseFloat(document.calculator.number1.value);
+        //     if (type == 1)
+        //         y = Math.sin((x * Math.PI) / 180.0);
+        //     else if (type == 2)
+        //         y = Math.log(x);
+        //     else if (type == 3)
+        //         y = Math.sqrt(x);
+        //     else if (type == 4)
+        //         y = Math.abd(x);
+        //     document.calculator.total.value = y;
+        // }
+
+        function gun() {
+            let a = parseFloat(document.getElementById("numbera").value);
+            let b = parseFloat(document.getElementById("numberb").value);
+            let c = parseFloat(document.getElementById("numberc").value);
+
+            let D = Math.pow(b, 2) - (4 * a * c);
+            
+            if (D >= 0) {
+                let RD = Math.sqrt(D);
+                let y1 = (-b + RD) / (2 * a);
+                let y2 = (-b - RD) / (2 * a);
+
+                document.getElementById("ans1").value = y1;
+                document.getElementById("ans2").value = y2;
+
+                if (D == 0) {
+                    document.getElementById("ans1").value += ' (중근)';
+                    document.getElementById("ans2").value += ' (중근)';
+                }
+            } else {
+                document.getElementById("ans1").value = "실근이 없습니다";
+                document.getElementById("ans2").value = "실근이 없습니다";
+            }
+        }
+
+    </script>
+    <!-- <form name="calc">
+        입력:               <input type="text" name="number1"><br />
+        계산 결과:          <input type="text" name="total"><br />
+
+        <input type="button" value="SIN" onclick="calc(1);">
+        <input type="button" value="LOG" onclick="calc(2);">
+        <input type="button" value="SQRT" onclick="calc(3);">
+        <input type="button" value="ABS" onclick="calc(4);">
+    </form> -->
+
+        A 입력:               <input type="text" id="numbera"><br />
+        B 입력:               <input type="text" id="numberb"><br />
+        C 입력:               <input type="text" id="numberc"><br />
+        근1:          <input type="text" id="ans1"><br />
+        근2:          <input type="text" id="ans2"><br />
+
+        <input type="button" value="계산하기" onclick="gun();" >
+</body>
+</html>
