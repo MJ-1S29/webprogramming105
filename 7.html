@@ -1,0 +1,27 @@
+<html>
+<head></head>
+<body>
+    <h1>학번_이름</h1>
+    <script>
+        function printArray(a) {
+            document.write("[ ");
+            for(let i=0;i<a.length;i++){
+                document.write(a[i]+" ");
+            }
+
+            document.write(" ] <br>");
+        }
+        let myArray1 = new Array();
+        myArray1[0]="a";
+        myArray1[1]="b";
+        myArray1[2]="o";
+        
+
+        let myArray2 = new Array("a", "b", "o"); 
+        let myArray3 = ["a", "b", "o"];
+
+        printArray(myArray1);
+        printArray(myArray2);
+        printArray(myArray3);
+    </script>
+</body></html>
