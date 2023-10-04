@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+    <script>
+        function get() {
+            if(document.getElementById("myCheckBox").unchecked){
+                document.getElementById("result").value = '동의';
+            }
+            else {
+                document.getElementById("result").value = '비동의';
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="checkbox" id="myCheckBox">동의합니다.<br>
+    <input type="button" onClick="get();" value="클릭">
+    <input type="text" id="result" value="">
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function r(){
+            document.body.style.backgroundColor = 'red';
+            setTimeout(o, 500);
+        }
+
+        function o(){
+            document.body.style.backgroundColor = 'orange';
+            setTimeout(y, 500);
+        }
+
+        function y(){
+            document.body.style.backgroundColor = 'yellow';
+            setTimeout(l, 500);
+        }
+
+        function l(){
+            document.body.style.backgroundColor = 'lime';
+            setTimeout(c, 500);
+        }
+
+        function c(){
+            document.body.style.backgroundColor = 'cyan';
+            setTimeout(b, 500);
+        }
+
+        function b(){
+            document.body.style.backgroundColor = 'blue';
+            setTimeout(p, 500);
+        }
+
+        function p(){
+            document.body.style.backgroundColor = 'purple';
+            setTimeout(r, 500);
+        }
+    </script>
+    <button onclick="r();" style="height: 50px; width: 81px;" >버튼</button>
+</body>
+</html>
