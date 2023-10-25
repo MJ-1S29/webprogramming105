@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <style>
+        * {
+            text-align: center;
+        }
+
+        #board {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #board tr td {
+            border: 1px solid white;
+            background: #34da79;
+            width: 16px;
+            height: 16px;
+            text-align: center;
+        }
+
+        #board tr td.clicked {
+            background: #6c5ee7;
+        }
+
+        #board tr td.mine {
+            background: #FF0000;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>지뢰찾기</h1>
+    <table id=board>
+    </table>
+    <BUTTON onclick="genGrid();">새로운 게임</BUTTON>
+    <script>
+        let grid = document.getElementById("board");
+        genGrid();
+
+        function genGrid() {
+            grid.innerHTML = "";
+            for (let i = 0; i < 8; i++) {
+                rw = grid.insertRow(i);
+                for (var j = 0; j < 8; j++) {
+                    cell = rw.insertCell(j);
+                    cell.onclick = function () { clickBox(this); }; 
+                    var mine = document.createAttribute("mine");
+                    cell.id = i + '_'+ j;
+                    if (Math.random() < 0.3)
+                        mine.value = "true";
+                    else
+                        mine.value = "false";
+                    cell.setAttributeNode(mine);
+                }
+                
+            }
+        }
+
+        function clickBox(cell) {
+            if (cell.getAttribute("mine") == "true") {
+                cell.className = "mine";
+                alert("게임이 종료되었습니다.");
+            } else {
+                cell.className = "clicked";
+                let id = cell.id;
+                console.log(id);
+                let i = parseInt(id.substring(0, id.indexOf('_')));
+                let j = parseInt(id.substring(id.indexOf('_')+1));
+                let num = 0;
+                
+                if (document.getElementById(i-1 + '_' + j-1).getAttribute("mine") == "true") {
+                    num++;
+                }
+                if (document.getElementById(i-1 + '_' + j).getAttribute("mine") == "true") {
+                    num++;
+                }
+                if (document.getElementById(i-1 + '_' + j+1).getAttribute("mine") == "true") {
+                    num++;
+                }
+                if (document.getElementById(i + '_' + j-1).getAttribute("mine") == "true") {
+                    num++;
+                }
+                if (document.getElementById(i + '_' + j+1).getAttribute("mine") == "true") {
+                    num++;
+                }
+                if (document.getElementById(i+1 + '_' + j-1).getAttribute("mine") == "true") {
+                    num++;
+                }
+                if (document.getElementById(i+1 + '_' + j).getAttribute("mine") == "true") {
+                    num++;
+                }
+                if (document.getElementById(i+1 + '_' + j-1).getAttribute("mine") == "true") {
+                    num++;
+                }
+
+                if (num == 0){
+                    clickBox(document.getElementById(i-1 + '_' + j-1));
+                    clickBox(document.getElementById(i-1 + '_' + j));
+                    clickBox(document.getElementById(i-1 + '_' + j+1));
+                    clickBox(document.getElementById(i + '_' + j-1));
+                    clickBox(document.getElementById(i + '_' + j+1));
+                    clickBox(document.getElementById(i+1 + '_' + j-1));
+                    clickBox(document.getElementById(i+1 + '_' + j));
+                    clickBox(document.getElementById(i+1 + '_' + j+1));
+                }
+                else{
+                    cell.innerHTML = num;
+                }
+                
+            }
+        }
+    </script>
+</body>
+
+</html>
