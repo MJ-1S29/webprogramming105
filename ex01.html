@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<body>
+  
+  <p id="demo"></p>
+
+  <button onclick="myStop()">시계 멈추기</button>
+  <button onclick="myStart()">시계 다시 시작하기</button>
+  <button onclick="lab()">시간 기록하기</button>
+
+
+  <script>
+    const myInterval = setInterval(myTimer, 100);
+
+    function myTimer() {
+      const date = new Date();
+      document.getElementById("demo").innerHTML = date.toLocaleTimeString();
+    }
+
+    function myStop() {
+      clearInterval(myInterval);
+    }
+    function myStart() {
+      const myInterval = setInterval(myTimer, 100);
+    }
+    function lab(){
+      const date = new Date();
+      let lab = document.createElement('p');
+      let text = document.createTextNode(date.toLocaleTimeString());
+      lab.appendChild(text);
+      document.body.append(lab);
+    }
+  </script>
+
+</script>
+</body>
+</html> 
