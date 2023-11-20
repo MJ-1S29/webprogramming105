@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<style>
+#myCanvas {
+background-color:rgb(255, 255, 255); /* 흰색으로 바꿈 */
+border: 1px solid blue; /* 점선에서 실선으로 바꿈 */
+}
+</style>
+<body>
+<button onclick="context.clearRect(0, 0, canvas.width, canvas.height);">화면 지우기</button>
+<button onclick="setcolour('#ff0000')">Red</button> <!-- 색 바꾸는 버튼 -->
+<button onclick="setcolour('#00ff00')">Green</button>
+<button onclick="setcolour('#0000ff')">Blue</button>
+<button onclick="setcolour('#ffff00')">Yellow</button>
+<button onclick="setcolour('#00ffff')">Cyan</button>
+<button onclick="setcolour('#ff00ff')">Magenta</button>
+<button onclick="setcolour(randomcolour())">Random</button> <!-- 색 랜덤 버튼-->
+<button onclick="setcolour('#ffffff')">white</button> <!--지우개 (흰색)-->
+<button onclick="setcolour('#000000')">black</button> <!-- 검은색 -->
+<br>
+<canvas id="myCanvas" width="600" height="400"></canvas>
+</br>
+<input type="text" id="in" value="#000000"> <!-- 색 입력 -->
+<button onclick="setcolour(document.getElementById('in').value)">색 정하기</button>
+<script>
+let canvas = document.getElementById("myCanvas");
+let context = canvas.getContext("2d");
+let last_x = 0, last_y = 0;
+let draw_mode = false;
+canvas.addEventListener("mousemove", function (event) {
+if (!draw_mode) return;
+let x = event.offsetX;
+let y = event.offsetY;
+context.lineTo(x, y);
+context.stroke();
+last_x = x;
+last_y = y;
+});
+canvas.addEventListener("mousedown", function (event) {
+last_x = event.offsetX;
+last_y = event.offsetY;
+context.beginPath();
+context.moveTo(last_x, last_y);
+draw_mode = true;
+});
+canvas.addEventListener("mouseup", function (event) {
+draw_mode = false;
+});
+canvas.addEventListener("mouseout", function (event) {
+draw_mode = false;
+});
+
+
+function setcolour(colour){
+    context.strokeStyle = colour;
+}
+
+function randomcolour(){
+    let tmp = "0123456789ABCDEF";
+    let colour = "#";
+    for(let i = 0 ; i < 6 ; i++ ){
+        colour += tmp[Math.floor(Math.random() * 16)];
+    }
+    return colour;
+}
+</script>
